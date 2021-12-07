@@ -78,9 +78,19 @@ public class EarthquakeCityMap extends PApplet {
 	    // earthquakes.  Then add each new SimplePointMarker to the 
 	    // List markers (so that it will be added to the map in the line below)
 	    
+	    for (PointFeature earthquake:earthquakes)
+	    {
+	    	
+	    	SimplePointMarker marker=createMarker(earthquake);
+	    	markers.add(marker);
+	    	
+	    }
+	    
+	    
 	    
 	    // Add the markers to the map so that they are displayed
-	    map.addMarkers(markers);
+	    for(Marker m:markers)
+	    map.addMarkers(m);
 	}
 		
 	/* createMarker: A suggested helper method that takes in an earthquake 
@@ -117,6 +127,21 @@ public class EarthquakeCityMap extends PApplet {
 	    // the magnitude to these variables (and change their value in the code 
 	    // above if you want to change what you mean by "moderate" and "light")
 	    
+	    int blue = color (0,0,255);
+	    int red = color(255,0,0);
+	    
+	    if(mag < THRESHOLD_LIGHT ){
+	    	marker.setColor(blue);
+	    	marker.setRadius(5);
+	    }
+	    if(mag >= THRESHOLD_LIGHT && mag < THRESHOLD_MODERATE){
+	    	marker.setColor(yellow);
+	    }
+	    if(mag >= THRESHOLD_MODERATE){
+	    	marker.setColor(red);
+	    	marker.setRadius(15);
+	    }
+	    
 	    
 	    // Finally return the marker
 	    return marker;
@@ -134,6 +159,23 @@ public class EarthquakeCityMap extends PApplet {
 	private void addKey() 
 	{	
 		// Remember you can use Processing's graphics methods here
+		fill(220);
+		rect(25, 50, 175, 250);
+		fill(15);
+		textSize(12);
+		text("Earthquake Key", 60, 70); 
+		textSize(12);
+		text("5.0+ Magnitude", 75, 120); 
+		textSize(12);
+		text("4.0+ Magnitude", 75, 170); 
+		textSize(12);
+		text("Below 4.0", 75, 220); 
+		fill(255,0,0);
+		ellipse(55,115,15,15);
+		fill(255,255,0);
+		ellipse(55,165,10,10);
+		fill(0,0,255);
+		ellipse(55,215,5,5);
 	
 	}
 }

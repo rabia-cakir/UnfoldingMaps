@@ -27,7 +27,7 @@ public class HelloWorld extends PApplet
 	public static String mbTilesString = "blankLight-1-3.mbtiles";
 	
 	// IF YOU ARE WORKING OFFLINE: Change the value of this variable to true
-	private static final boolean offline = true;
+	private static final boolean offline = false;
 	
 	/** The map we use to display our home town: La Jolla, CA */
 	UnfoldingMap map1;
